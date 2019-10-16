@@ -6,18 +6,14 @@ var patientTriageApp = new Vue({
   methods: {
     handleSubmit() {
       fetch('api/waiting/post.php', {
-        method: 'POST',
+        method:'POST',
         body: JSON.stringify(this.patient),
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }
       })
-      .then( response => response.json() )
-      .then( json => {waitingApp.patients = json})
-      .catch( err => {
-        console.error('TRIAGE POST ERROR:');
-        console.error(err);
-      })
+      .then(response => response.json())
+      .then(json => { waitingApp.patients = json })
 
       this.handleReset();
     },
